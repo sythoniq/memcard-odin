@@ -1,25 +1,30 @@
+import {useState, useEffect} from 'react'
 import Card from './sub/Card.jsx'
 
-let dataObj = [];
-
-export async function fetchData() {
-  const data = await fetch('https://dattebayo-api.onrender.com/akatsuki')
-  const res = await data.json();
-  
-  let savages = res["akatsuki"];
-
-  for (let i = 0; i < 17; i++) {
-    if ([1,2,4,5,7,8,13,15].includes(i)) continue;
-    dataObj.push({
-      "image": savages[i].images[0],
-      "id": savages[i].id,
-      "name": savages[i].name
-    });
-  }
-  return dataObj;
-}
-
 function Grid() {
+  const [dataObj, setDataObj] = useState([]);
+  useEffect(() => { 
+    async function getData() {
+      const res = await fetch('https://dattebayo-api.onrender.com/akatsuki');
+      const data = await res.json();
+
+
+      let randos = data['akatsuki'];
+      let newArr = [];
+      
+      for (let i = 0; i < 18; i++) {
+        if ([1,2,4,5,7,8,11,13,15].includes(i)) continue;
+
+        newArr.push({
+          "image": randos[i].images[0],
+          "id": randos[i].id,
+          "name": randos[i].name
+        })
+      }
+      setDataObj(newArr)
+    }
+    getData();
+  }, [])
   return (
     <main className="grid-content">
       {dataObj.map(obj => {
