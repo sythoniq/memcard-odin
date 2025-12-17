@@ -22,7 +22,7 @@ function shuffle(array) {
 function HeadingComp(props) {
   return (
     <header className="heading-comp">
-      <h3>App Name</h3>
+      <h3>What To Name...</h3>
       <div className="scores">
         <h5>Score: {props.score}</h5>
         <h5>Best Score: {props.best}</h5>
