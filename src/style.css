@@ -9,3 +9,7 @@
 body {
   background-color: rgb(204, 211, 250);
 }
+
+main {
+  user-select: none;
+}
