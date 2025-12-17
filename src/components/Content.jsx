@@ -65,7 +65,7 @@ function Content() {
     let tgtId = e.parentNode.id;
     if(!clicked.includes(tgtId)) {
       setClicked([...clicked, tgtId]);
-      setScore(sccore => score + 1);
+      setScore(score => score + 1);
       shuffle(images);
     } else if (clicked.includes(tgtId)) {
       setClicked([]);
